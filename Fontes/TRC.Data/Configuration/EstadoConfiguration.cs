@@ -10,9 +10,15 @@ namespace TRC.Data.Configuration
         {
             builder.HasKey(e => e.Id_Estado);
 
-            builder.Property(e => e.Sigla).HasMaxLength(2).IsRequired();
+            builder.ToTable("TB_ESTADO");
 
-            builder.Property(e => e.Nome).IsRequired();
+            builder.Property(e => e.Sigla)
+                .HasColumnName("Sigla")
+                .HasMaxLength(2).IsRequired();
+
+            builder.Property(e => e.Nome)
+                .HasColumnName("Nome")
+                .IsRequired();
         }
     }
 }

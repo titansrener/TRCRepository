@@ -1,21 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using TRC.Core.Modelo;
+using TRC.Data.Interfaces;
 using TRC.Manager.Interfaces;
 
 namespace TRC.Manager.Implementation
 {
     public class EstadoManager : IEstadoManager
     {
-        private readonly IEstadoManager _estadoManager;
+        private readonly IEstadoRepository _estadoRepository;
 
-        public EstadoManager(IEstadoManager estadoManager)
+        public EstadoManager(IEstadoRepository estadoRepository)
         {
-            _estadoManager = estadoManager;
+            _estadoRepository = estadoRepository;
         }
         public async Task<IEnumerable<Estado>> GetEstadosAsync()
         {
-            return await _estadoManager.GetEstadosAsync();
+            return await _estadoRepository.GetEstadosAsync();
         }
     }
 }
